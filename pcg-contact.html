@@ -341,9 +341,53 @@
             }
         }
 
+        /* Mobile Menu */
+        .mobile-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 5px;
+        }
+
+        .mobile-toggle span {
+            width: 25px;
+            height: 2px;
+            background: var(--primary);
+            transition: all 0.3s ease;
+        }
+
+        .mobile-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: white;
+            padding: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .mobile-menu.active {
+            display: flex;
+        }
+
+        .mobile-menu a {
+            color: var(--text-dark);
+            text-decoration: none;
+            font-weight: 500;
+            padding: 10px 0;
+            border-bottom: 1px solid var(--border);
+        }
+
         @media (max-width: 768px) {
             .nav-container { padding: 15px 20px; }
             .nav-links { display: none; }
+            .mobile-toggle { display: flex; }
             .hero { padding: 120px 20px 40px; }
             .contact-section { padding: 40px 20px; }
             .form-row { grid-template-columns: 1fr; }
@@ -363,6 +407,16 @@
                 <li><a href="pcg-partner.html">Partner</a></li>
                 <li><a href="pcg-contact.html">Contact</a></li>
             </ul>
+            <button class="mobile-toggle" id="mobileToggle" aria-label="Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+        <div class="mobile-menu" id="mobileMenu">
+            <a href="pcg-redesign.html">Home</a>
+            <a href="pcg-partner.html">Partner</a>
+            <a href="pcg-contact.html">Contact</a>
         </div>
     </nav>
 
@@ -449,5 +503,15 @@
             <p>&copy; 2026 Pleasanton Commercial Group. All rights reserved.</p>
         </div>
     </footer>
+
+    <script>
+        const mobileToggle = document.getElementById('mobileToggle');
+        const mobileMenu = document.getElementById('mobileMenu');
+        if (mobileToggle && mobileMenu) {
+            mobileToggle.addEventListener('click', () => {
+                mobileMenu.classList.toggle('active');
+            });
+        }
+    </script>
 </body>
 </html>

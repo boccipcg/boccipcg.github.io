@@ -733,6 +733,36 @@
             margin: 0 auto;
         }
 
+        /* Mobile Menu */
+        .mobile-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: white;
+            padding: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .mobile-menu.active {
+            display: flex;
+        }
+
+        .mobile-menu a {
+            color: var(--text-dark);
+            text-decoration: none;
+            font-weight: 500;
+            padding: 10px 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .mobile-menu a:last-child {
+            border-bottom: none;
+        }
+
         /* Mobile Responsive */
         @media (max-width: 1024px) {
             .hero-grid {
@@ -821,13 +851,21 @@
                 <li><a href="#about">About</a></li>
                 <li><a href="#testimonials">Testimonials</a></li>
                 <li><a href="#features">Why Us</a></li>
-                <li><a href="#contact" class="nav-cta">Contact</a></li>
+                <li><a href="pcg-partner.html">Partner</a></li>
+                <li><a href="pcg-contact.html" class="nav-cta">Contact</a></li>
             </ul>
-            <button class="mobile-toggle" aria-label="Menu">
+            <button class="mobile-toggle" id="mobileToggle" aria-label="Menu">
                 <span></span>
                 <span></span>
                 <span></span>
             </button>
+        </div>
+        <div class="mobile-menu" id="mobileMenu">
+            <a href="#about">About</a>
+            <a href="#testimonials">Testimonials</a>
+            <a href="#features">Why Us</a>
+            <a href="pcg-partner.html">Partner</a>
+            <a href="pcg-contact.html">Contact</a>
         </div>
     </nav>
 
@@ -1058,6 +1096,15 @@
                 }
             });
         });
+
+        // Mobile menu toggle
+        const mobileToggle = document.getElementById('mobileToggle');
+        const mobileMenu = document.getElementById('mobileMenu');
+        if (mobileToggle && mobileMenu) {
+            mobileToggle.addEventListener('click', () => {
+                mobileMenu.classList.toggle('active');
+            });
+        }
     </script>
 </body>
 </html>
